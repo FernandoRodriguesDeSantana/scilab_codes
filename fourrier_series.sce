@@ -32,7 +32,7 @@ for n = 1:harmonic_numbers
     zeq = (((z2*z3)/(z2+z3)) + (z1))
     
     // Source current:
-    source_current = ((wave) / (zeq))
+    source_current = ((fourrier_amplitude * sin(frequency_fourrier*t)) / (zeq))
     capacitor_current = ((source_current) * ((z2)/(z2+z3)))
     capacitor_voltage = ((capacitor_voltage) + ((capacitor_current) * z3))    
 end
@@ -40,9 +40,10 @@ end
 wave = wave - offset
 
 // Capacitor voltage equation:
-vc = (2.5 - ((2.5/6)*2)) + capacitor_voltage
+vc = -1.666 - capacitor_voltage
 
 title('Sawtooth Voltage Source')
 xlabel('Time(s)')
 ylabel('Voltage(v)')
 plot(t, vc)
+//plot(t,wave)
